@@ -1,0 +1,321 @@
+id,category,headline,image_category,image_path,label,label_name,split
+1,disasters,Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage,disasters,data\images\img_0001.png,0,Consistent,val
+2,disasters,Wildfire Rapidly Spreads Across Dry Valley Forcing Emergency Evacuation of 15000 Residents,disasters,data\images\img_0002.png,0,Consistent,test
+3,disasters,Category 4 Hurricane Makes Catastrophic Landfall With Sustained 140mph Winds and Severe Surges,disasters,data\images\img_0003.png,0,Consistent,val
+4,disasters,Flash Flooding Submerges Major Highways and Downtown Districts After Record Midnight Rainfall,disasters,data\images\img_0004.png,0,Consistent,train
+5,disasters,Volcanic Ash Cloud Disrupts International Air Travel as Seismic Activity Surges Dramatically,disasters,data\images\img_0005.png,0,Consistent,train
+6,disasters,Emergency Crews Rescue Hundreds Stranded on Rooftops in Worst Regional Inundation in Decades,disasters,data\images\img_0006.png,0,Consistent,val
+7,disasters,Historic Blizzard Dumps Four Feet of Snow Paralyzing Metropolitan Transit and Electric Grid,disasters,data\images\img_0007.png,0,Consistent,val
+8,disasters,Tsunami Warning Issued Across Pacific Archipelago Following Deep Ocean Undersea Tremor,disasters,data\images\img_0008.png,0,Consistent,test
+9,disasters,Industrial Chemical Plant Fire Triggers High-Level Toxicity Alerts and Shelter In Place Order,disasters,data\images\img_0009.png,0,Consistent,test
+10,disasters,Severe Drought Depletes Mountain Reservoir Levels to Historic 80-Year Record Lows,disasters,data\images\img_0010.png,0,Consistent,train
+11,disasters,Deadly Mudslide Wipes Out Mountain Highway and Threatens Downstream Rural Settlements,disasters,data\images\img_0011.png,0,Consistent,train
+12,disasters,Tornado Outbreak Tears Across Midwestern Counties Destroying Homes and Agricultural Silos,disasters,data\images\img_0012.png,0,Consistent,train
+13,disasters,Coastal Barrier Island Suffers Extreme Beachfront Erosion Following Consecutive Tropical Storms,disasters,data\images\img_0013.png,0,Consistent,train
+14,disasters,Rapid Glacial Lake Outburst Triggers Devastating Downstream Flash Flood in Alpine Valley,disasters,data\images\img_0014.png,0,Consistent,train
+15,disasters,Heatwave Breaks All-Time Regional Records Straining Power Grid With Blackouts Reported,disasters,data\images\img_0015.png,0,Consistent,test
+16,disasters,Severe Cyclone Leaves Hundreds of Thousands Without Clean Water and Power Across Archipelago,disasters,data\images\img_0016.png,0,Consistent,test
+17,disasters,Dam Spillway Exceeds Maximum Capacity Forcing Urgent Midnight Inundation Warnings,disasters,data\images\img_0017.png,0,Consistent,train
+18,disasters,Emergency Responders Search Wreckage Following Catastrophic Apartment Complex Collapse,disasters,data\images\img_0018.png,0,Consistent,test
+19,disasters,Forest Fire Envelopes National Reserve as Unseasonably Arid Gale Winds Hamper Containment,disasters,data\images\img_0019.png,0,Consistent,train
+20,disasters,Heavy Monsoon Downpours Trigger Severe Urban Landslides and Bridge Infrastructure Failures,disasters,data\images\img_0020.png,0,Consistent,train
+21,disasters,Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage,disasters,data\images\img_0021.png,0,Consistent,train
+22,disasters,Wildfire Rapidly Spreads Across Dry Valley Forcing Emergency Evacuation of 15000 Residents,disasters,data\images\img_0022.png,0,Consistent,train
+23,disasters,Category 4 Hurricane Makes Catastrophic Landfall With Sustained 140mph Winds and Severe Surges,disasters,data\images\img_0023.png,0,Consistent,train
+24,disasters,Flash Flooding Submerges Major Highways and Downtown Districts After Record Midnight Rainfall,disasters,data\images\img_0024.png,0,Consistent,train
+25,disasters,Volcanic Ash Cloud Disrupts International Air Travel as Seismic Activity Surges Dramatically,disasters,data\images\img_0025.png,0,Consistent,train
+26,disasters,Emergency Crews Rescue Hundreds Stranded on Rooftops in Worst Regional Inundation in Decades,disasters,data\images\img_0026.png,0,Consistent,train
+27,disasters,Historic Blizzard Dumps Four Feet of Snow Paralyzing Metropolitan Transit and Electric Grid,disasters,data\images\img_0027.png,0,Consistent,train
+28,disasters,Tsunami Warning Issued Across Pacific Archipelago Following Deep Ocean Undersea Tremor,disasters,data\images\img_0028.png,0,Consistent,val
+29,disasters,Industrial Chemical Plant Fire Triggers High-Level Toxicity Alerts and Shelter In Place Order,disasters,data\images\img_0029.png,0,Consistent,train
+30,disasters,Severe Drought Depletes Mountain Reservoir Levels to Historic 80-Year Record Lows,disasters,data\images\img_0030.png,0,Consistent,train
+31,disasters,Deadly Mudslide Wipes Out Mountain Highway and Threatens Downstream Rural Settlements,disasters,data\images\img_0031.png,0,Consistent,train
+32,disasters,Tornado Outbreak Tears Across Midwestern Counties Destroying Homes and Agricultural Silos,disasters,data\images\img_0032.png,0,Consistent,train
+33,disasters,Coastal Barrier Island Suffers Extreme Beachfront Erosion Following Consecutive Tropical Storms,disasters,data\images\img_0033.png,0,Consistent,train
+34,disasters,Rapid Glacial Lake Outburst Triggers Devastating Downstream Flash Flood in Alpine Valley,disasters,data\images\img_0034.png,0,Consistent,train
+35,disasters,Heatwave Breaks All-Time Regional Records Straining Power Grid With Blackouts Reported,disasters,data\images\img_0035.png,0,Consistent,train
+36,disasters,Severe Cyclone Leaves Hundreds of Thousands Without Clean Water and Power Across Archipelago,disasters,data\images\img_0036.png,0,Consistent,train
+37,disasters,Dam Spillway Exceeds Maximum Capacity Forcing Urgent Midnight Inundation Warnings,disasters,data\images\img_0037.png,0,Consistent,train
+38,disasters,Emergency Responders Search Wreckage Following Catastrophic Apartment Complex Collapse,disasters,data\images\img_0038.png,0,Consistent,train
+39,disasters,Forest Fire Envelopes National Reserve as Unseasonably Arid Gale Winds Hamper Containment,disasters,data\images\img_0039.png,0,Consistent,val
+40,disasters,Heavy Monsoon Downpours Trigger Severe Urban Landslides and Bridge Infrastructure Failures,disasters,data\images\img_0040.png,0,Consistent,train
+41,disasters,Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage,sports,data\images\img_0041.png,1,Inconsistent,train
+42,disasters,Wildfire Rapidly Spreads Across Dry Valley Forcing Emergency Evacuation of 15000 Residents,politics,data\images\img_0042.png,1,Inconsistent,train
+43,disasters,Category 4 Hurricane Makes Catastrophic Landfall With Sustained 140mph Winds and Severe Surges,tech,data\images\img_0043.png,1,Inconsistent,test
+44,disasters,Flash Flooding Submerges Major Highways and Downtown Districts After Record Midnight Rainfall,sports,data\images\img_0044.png,1,Inconsistent,train
+45,disasters,Volcanic Ash Cloud Disrupts International Air Travel as Seismic Activity Surges Dramatically,politics,data\images\img_0045.png,1,Inconsistent,train
+46,disasters,Emergency Crews Rescue Hundreds Stranded on Rooftops in Worst Regional Inundation in Decades,tech,data\images\img_0046.png,1,Inconsistent,val
+47,disasters,Historic Blizzard Dumps Four Feet of Snow Paralyzing Metropolitan Transit and Electric Grid,sports,data\images\img_0047.png,1,Inconsistent,train
+48,disasters,Tsunami Warning Issued Across Pacific Archipelago Following Deep Ocean Undersea Tremor,politics,data\images\img_0048.png,1,Inconsistent,val
+49,disasters,Industrial Chemical Plant Fire Triggers High-Level Toxicity Alerts and Shelter In Place Order,tech,data\images\img_0049.png,1,Inconsistent,train
+50,disasters,Severe Drought Depletes Mountain Reservoir Levels to Historic 80-Year Record Lows,sports,data\images\img_0050.png,1,Inconsistent,val
+51,disasters,Deadly Mudslide Wipes Out Mountain Highway and Threatens Downstream Rural Settlements,politics,data\images\img_0051.png,1,Inconsistent,train
+52,disasters,Tornado Outbreak Tears Across Midwestern Counties Destroying Homes and Agricultural Silos,tech,data\images\img_0052.png,1,Inconsistent,train
+53,disasters,Coastal Barrier Island Suffers Extreme Beachfront Erosion Following Consecutive Tropical Storms,sports,data\images\img_0053.png,1,Inconsistent,train
+54,disasters,Rapid Glacial Lake Outburst Triggers Devastating Downstream Flash Flood in Alpine Valley,politics,data\images\img_0054.png,1,Inconsistent,train
+55,disasters,Heatwave Breaks All-Time Regional Records Straining Power Grid With Blackouts Reported,tech,data\images\img_0055.png,1,Inconsistent,train
+56,disasters,Severe Cyclone Leaves Hundreds of Thousands Without Clean Water and Power Across Archipelago,sports,data\images\img_0056.png,1,Inconsistent,train
+57,disasters,Dam Spillway Exceeds Maximum Capacity Forcing Urgent Midnight Inundation Warnings,politics,data\images\img_0057.png,1,Inconsistent,test
+58,disasters,Emergency Responders Search Wreckage Following Catastrophic Apartment Complex Collapse,tech,data\images\img_0058.png,1,Inconsistent,val
+59,disasters,Forest Fire Envelopes National Reserve as Unseasonably Arid Gale Winds Hamper Containment,sports,data\images\img_0059.png,1,Inconsistent,train
+60,disasters,Heavy Monsoon Downpours Trigger Severe Urban Landslides and Bridge Infrastructure Failures,politics,data\images\img_0060.png,1,Inconsistent,train
+61,disasters,Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage,tech,data\images\img_0061.png,1,Inconsistent,train
+62,disasters,Wildfire Rapidly Spreads Across Dry Valley Forcing Emergency Evacuation of 15000 Residents,sports,data\images\img_0062.png,1,Inconsistent,train
+63,disasters,Category 4 Hurricane Makes Catastrophic Landfall With Sustained 140mph Winds and Severe Surges,politics,data\images\img_0063.png,1,Inconsistent,test
+64,disasters,Flash Flooding Submerges Major Highways and Downtown Districts After Record Midnight Rainfall,tech,data\images\img_0064.png,1,Inconsistent,train
+65,disasters,Volcanic Ash Cloud Disrupts International Air Travel as Seismic Activity Surges Dramatically,sports,data\images\img_0065.png,1,Inconsistent,val
+66,disasters,Emergency Crews Rescue Hundreds Stranded on Rooftops in Worst Regional Inundation in Decades,politics,data\images\img_0066.png,1,Inconsistent,train
+67,disasters,Historic Blizzard Dumps Four Feet of Snow Paralyzing Metropolitan Transit and Electric Grid,tech,data\images\img_0067.png,1,Inconsistent,val
+68,disasters,Tsunami Warning Issued Across Pacific Archipelago Following Deep Ocean Undersea Tremor,sports,data\images\img_0068.png,1,Inconsistent,train
+69,disasters,Industrial Chemical Plant Fire Triggers High-Level Toxicity Alerts and Shelter In Place Order,politics,data\images\img_0069.png,1,Inconsistent,train
+70,disasters,Severe Drought Depletes Mountain Reservoir Levels to Historic 80-Year Record Lows,tech,data\images\img_0070.png,1,Inconsistent,test
+71,disasters,Deadly Mudslide Wipes Out Mountain Highway and Threatens Downstream Rural Settlements,sports,data\images\img_0071.png,1,Inconsistent,train
+72,disasters,Tornado Outbreak Tears Across Midwestern Counties Destroying Homes and Agricultural Silos,politics,data\images\img_0072.png,1,Inconsistent,train
+73,disasters,Coastal Barrier Island Suffers Extreme Beachfront Erosion Following Consecutive Tropical Storms,tech,data\images\img_0073.png,1,Inconsistent,train
+74,disasters,Rapid Glacial Lake Outburst Triggers Devastating Downstream Flash Flood in Alpine Valley,sports,data\images\img_0074.png,1,Inconsistent,train
+75,disasters,Heatwave Breaks All-Time Regional Records Straining Power Grid With Blackouts Reported,politics,data\images\img_0075.png,1,Inconsistent,test
+76,disasters,Severe Cyclone Leaves Hundreds of Thousands Without Clean Water and Power Across Archipelago,tech,data\images\img_0076.png,1,Inconsistent,train
+77,disasters,Dam Spillway Exceeds Maximum Capacity Forcing Urgent Midnight Inundation Warnings,sports,data\images\img_0077.png,1,Inconsistent,train
+78,disasters,Emergency Responders Search Wreckage Following Catastrophic Apartment Complex Collapse,politics,data\images\img_0078.png,1,Inconsistent,train
+79,disasters,Forest Fire Envelopes National Reserve as Unseasonably Arid Gale Winds Hamper Containment,tech,data\images\img_0079.png,1,Inconsistent,train
+80,disasters,Heavy Monsoon Downpours Trigger Severe Urban Landslides and Bridge Infrastructure Failures,sports,data\images\img_0080.png,1,Inconsistent,test
+81,sports,Underdog Franchise Clinches National Championship in Thrilling Double Overtime Victory,sports,data\images\img_0081.png,0,Consistent,test
+82,sports,Star Quarterback Shatters Decade-Old All-Time Passing Record With Stunning Final Drive,sports,data\images\img_0082.png,0,Consistent,val
+83,sports,Olympic Sprinter Breaks World 100m Dash Record With Blistering Sub-9.5 Second Time,sports,data\images\img_0083.png,0,Consistent,train
+84,sports,Championship Final Decided by Dramatic Penalty Shootout Before Sold-Out Stadium Crowd,sports,data\images\img_0084.png,0,Consistent,train
+85,sports,Veteran Tennis Champion Triumphs in Five-Set Grand Slam Epic on Historic Center Court,sports,data\images\img_0085.png,0,Consistent,train
+86,sports,Home Team Pulls Off Unbelievable 20-Point Comeback in Fourth Quarter of Title Clash,sports,data\images\img_0086.png,0,Consistent,train
+87,sports,Cycling Tour Contender Dominates Grueling Mountain Stage to Claim Iconic Yellow Jersey,sports,data\images\img_0087.png,0,Consistent,train
+88,sports,Marathon Runner Smashes Course Milestone by Over Two Minutes in Rainy Capital Race,sports,data\images\img_0088.png,0,Consistent,val
+89,sports,Rising Tennis Phenom Upsets Top-Ranked Seed in Sensational Straight Sets Masterclass,sports,data\images\img_0089.png,0,Consistent,train
+90,sports,Defending Champions Hoist Gold Trophy After Undefeated Regular Season Performance,sports,data\images\img_0090.png,0,Consistent,train
+91,sports,Basketball MVP Explodes for 55 Points in Decisive Playoff Series Clinching Match,sports,data\images\img_0091.png,0,Consistent,test
+92,sports,Goalkeeper Makes Four Spectacular Stoppages in Stoppage Time to Seal League Championship,sports,data\images\img_0092.png,0,Consistent,train
+93,sports,Heavyweight Boxing Championship Belt Decided by Stunning Ninth Round Knockout,sports,data\images\img_0093.png,0,Consistent,train
+94,sports,Formula Motorsport Driver Takes Flag-to-Flag Victory in Wet Weather Grand Prix Classic,sports,data\images\img_0094.png,0,Consistent,train
+95,sports,University Athletics Team Secures Historic Triple Crown in National Track and Field,sports,data\images\img_0095.png,0,Consistent,train
+96,sports,National Soccer Squad Qualifies for Global Tournament With Stoppage Time Header,sports,data\images\img_0096.png,0,Consistent,train
+97,sports,Baseball Ace Tosses Historic No-Hitter Striking Out Fourteen in Masterful Display,sports,data\images\img_0097.png,0,Consistent,train
+98,sports,Rowing Crew Powers Through Headwind to Capture International Regatta Gold by Split Second,sports,data\images\img_0098.png,0,Consistent,train
+99,sports,Gymnast Delivers Flawless Floor Routine to Earn Perfect Score and All-Around Gold,sports,data\images\img_0099.png,0,Consistent,train
+100,sports,Ice Hockey Goaltender Records 45 Saves in Shutout Victory to Hoist Coveted Cup,sports,data\images\img_0100.png,0,Consistent,train
+101,sports,Underdog Franchise Clinches National Championship in Thrilling Double Overtime Victory,sports,data\images\img_0101.png,0,Consistent,test
+102,sports,Star Quarterback Shatters Decade-Old All-Time Passing Record With Stunning Final Drive,sports,data\images\img_0102.png,0,Consistent,train
+103,sports,Olympic Sprinter Breaks World 100m Dash Record With Blistering Sub-9.5 Second Time,sports,data\images\img_0103.png,0,Consistent,train
+104,sports,Championship Final Decided by Dramatic Penalty Shootout Before Sold-Out Stadium Crowd,sports,data\images\img_0104.png,0,Consistent,val
+105,sports,Veteran Tennis Champion Triumphs in Five-Set Grand Slam Epic on Historic Center Court,sports,data\images\img_0105.png,0,Consistent,train
+106,sports,Home Team Pulls Off Unbelievable 20-Point Comeback in Fourth Quarter of Title Clash,sports,data\images\img_0106.png,0,Consistent,val
+107,sports,Cycling Tour Contender Dominates Grueling Mountain Stage to Claim Iconic Yellow Jersey,sports,data\images\img_0107.png,0,Consistent,val
+108,sports,Marathon Runner Smashes Course Milestone by Over Two Minutes in Rainy Capital Race,sports,data\images\img_0108.png,0,Consistent,train
+109,sports,Rising Tennis Phenom Upsets Top-Ranked Seed in Sensational Straight Sets Masterclass,sports,data\images\img_0109.png,0,Consistent,val
+110,sports,Defending Champions Hoist Gold Trophy After Undefeated Regular Season Performance,sports,data\images\img_0110.png,0,Consistent,train
+111,sports,Basketball MVP Explodes for 55 Points in Decisive Playoff Series Clinching Match,sports,data\images\img_0111.png,0,Consistent,train
+112,sports,Goalkeeper Makes Four Spectacular Stoppages in Stoppage Time to Seal League Championship,sports,data\images\img_0112.png,0,Consistent,test
+113,sports,Heavyweight Boxing Championship Belt Decided by Stunning Ninth Round Knockout,sports,data\images\img_0113.png,0,Consistent,train
+114,sports,Formula Motorsport Driver Takes Flag-to-Flag Victory in Wet Weather Grand Prix Classic,sports,data\images\img_0114.png,0,Consistent,test
+115,sports,University Athletics Team Secures Historic Triple Crown in National Track and Field,sports,data\images\img_0115.png,0,Consistent,test
+116,sports,National Soccer Squad Qualifies for Global Tournament With Stoppage Time Header,sports,data\images\img_0116.png,0,Consistent,train
+117,sports,Baseball Ace Tosses Historic No-Hitter Striking Out Fourteen in Masterful Display,sports,data\images\img_0117.png,0,Consistent,train
+118,sports,Rowing Crew Powers Through Headwind to Capture International Regatta Gold by Split Second,sports,data\images\img_0118.png,0,Consistent,train
+119,sports,Gymnast Delivers Flawless Floor Routine to Earn Perfect Score and All-Around Gold,sports,data\images\img_0119.png,0,Consistent,train
+120,sports,Ice Hockey Goaltender Records 45 Saves in Shutout Victory to Hoist Coveted Cup,sports,data\images\img_0120.png,0,Consistent,train
+121,sports,Underdog Franchise Clinches National Championship in Thrilling Double Overtime Victory,disasters,data\images\img_0121.png,1,Inconsistent,val
+122,sports,Star Quarterback Shatters Decade-Old All-Time Passing Record With Stunning Final Drive,politics,data\images\img_0122.png,1,Inconsistent,test
+123,sports,Olympic Sprinter Breaks World 100m Dash Record With Blistering Sub-9.5 Second Time,tech,data\images\img_0123.png,1,Inconsistent,val
+124,sports,Championship Final Decided by Dramatic Penalty Shootout Before Sold-Out Stadium Crowd,disasters,data\images\img_0124.png,1,Inconsistent,train
+125,sports,Veteran Tennis Champion Triumphs in Five-Set Grand Slam Epic on Historic Center Court,politics,data\images\img_0125.png,1,Inconsistent,test
+126,sports,Home Team Pulls Off Unbelievable 20-Point Comeback in Fourth Quarter of Title Clash,tech,data\images\img_0126.png,1,Inconsistent,train
+127,sports,Cycling Tour Contender Dominates Grueling Mountain Stage to Claim Iconic Yellow Jersey,disasters,data\images\img_0127.png,1,Inconsistent,train
+128,sports,Marathon Runner Smashes Course Milestone by Over Two Minutes in Rainy Capital Race,politics,data\images\img_0128.png,1,Inconsistent,test
+129,sports,Rising Tennis Phenom Upsets Top-Ranked Seed in Sensational Straight Sets Masterclass,tech,data\images\img_0129.png,1,Inconsistent,train
+130,sports,Defending Champions Hoist Gold Trophy After Undefeated Regular Season Performance,disasters,data\images\img_0130.png,1,Inconsistent,train
+131,sports,Basketball MVP Explodes for 55 Points in Decisive Playoff Series Clinching Match,politics,data\images\img_0131.png,1,Inconsistent,train
+132,sports,Goalkeeper Makes Four Spectacular Stoppages in Stoppage Time to Seal League Championship,tech,data\images\img_0132.png,1,Inconsistent,train
+133,sports,Heavyweight Boxing Championship Belt Decided by Stunning Ninth Round Knockout,disasters,data\images\img_0133.png,1,Inconsistent,train
+134,sports,Formula Motorsport Driver Takes Flag-to-Flag Victory in Wet Weather Grand Prix Classic,politics,data\images\img_0134.png,1,Inconsistent,train
+135,sports,University Athletics Team Secures Historic Triple Crown in National Track and Field,tech,data\images\img_0135.png,1,Inconsistent,test
+136,sports,National Soccer Squad Qualifies for Global Tournament With Stoppage Time Header,disasters,data\images\img_0136.png,1,Inconsistent,test
+137,sports,Baseball Ace Tosses Historic No-Hitter Striking Out Fourteen in Masterful Display,politics,data\images\img_0137.png,1,Inconsistent,train
+138,sports,Rowing Crew Powers Through Headwind to Capture International Regatta Gold by Split Second,tech,data\images\img_0138.png,1,Inconsistent,train
+139,sports,Gymnast Delivers Flawless Floor Routine to Earn Perfect Score and All-Around Gold,disasters,data\images\img_0139.png,1,Inconsistent,train
+140,sports,Ice Hockey Goaltender Records 45 Saves in Shutout Victory to Hoist Coveted Cup,politics,data\images\img_0140.png,1,Inconsistent,train
+141,sports,Underdog Franchise Clinches National Championship in Thrilling Double Overtime Victory,tech,data\images\img_0141.png,1,Inconsistent,val
+142,sports,Star Quarterback Shatters Decade-Old All-Time Passing Record With Stunning Final Drive,disasters,data\images\img_0142.png,1,Inconsistent,test
+143,sports,Olympic Sprinter Breaks World 100m Dash Record With Blistering Sub-9.5 Second Time,politics,data\images\img_0143.png,1,Inconsistent,val
+144,sports,Championship Final Decided by Dramatic Penalty Shootout Before Sold-Out Stadium Crowd,tech,data\images\img_0144.png,1,Inconsistent,train
+145,sports,Veteran Tennis Champion Triumphs in Five-Set Grand Slam Epic on Historic Center Court,disasters,data\images\img_0145.png,1,Inconsistent,train
+146,sports,Home Team Pulls Off Unbelievable 20-Point Comeback in Fourth Quarter of Title Clash,politics,data\images\img_0146.png,1,Inconsistent,train
+147,sports,Cycling Tour Contender Dominates Grueling Mountain Stage to Claim Iconic Yellow Jersey,tech,data\images\img_0147.png,1,Inconsistent,train
+148,sports,Marathon Runner Smashes Course Milestone by Over Two Minutes in Rainy Capital Race,disasters,data\images\img_0148.png,1,Inconsistent,train
+149,sports,Rising Tennis Phenom Upsets Top-Ranked Seed in Sensational Straight Sets Masterclass,politics,data\images\img_0149.png,1,Inconsistent,train
+150,sports,Defending Champions Hoist Gold Trophy After Undefeated Regular Season Performance,tech,data\images\img_0150.png,1,Inconsistent,train
+151,sports,Basketball MVP Explodes for 55 Points in Decisive Playoff Series Clinching Match,disasters,data\images\img_0151.png,1,Inconsistent,train
+152,sports,Goalkeeper Makes Four Spectacular Stoppages in Stoppage Time to Seal League Championship,politics,data\images\img_0152.png,1,Inconsistent,train
+153,sports,Heavyweight Boxing Championship Belt Decided by Stunning Ninth Round Knockout,tech,data\images\img_0153.png,1,Inconsistent,train
+154,sports,Formula Motorsport Driver Takes Flag-to-Flag Victory in Wet Weather Grand Prix Classic,disasters,data\images\img_0154.png,1,Inconsistent,val
+155,sports,University Athletics Team Secures Historic Triple Crown in National Track and Field,politics,data\images\img_0155.png,1,Inconsistent,train
+156,sports,National Soccer Squad Qualifies for Global Tournament With Stoppage Time Header,tech,data\images\img_0156.png,1,Inconsistent,train
+157,sports,Baseball Ace Tosses Historic No-Hitter Striking Out Fourteen in Masterful Display,disasters,data\images\img_0157.png,1,Inconsistent,train
+158,sports,Rowing Crew Powers Through Headwind to Capture International Regatta Gold by Split Second,politics,data\images\img_0158.png,1,Inconsistent,val
+159,sports,Gymnast Delivers Flawless Floor Routine to Earn Perfect Score and All-Around Gold,tech,data\images\img_0159.png,1,Inconsistent,train
+160,sports,Ice Hockey Goaltender Records 45 Saves in Shutout Victory to Hoist Coveted Cup,disasters,data\images\img_0160.png,1,Inconsistent,train
+161,politics,Parliament Passes Historic Bipartisan Environmental Protection Bill Following Heated Debate,politics,data\images\img_0161.png,0,Consistent,train
+162,politics,Head of State Delivers Annual Address Pledging Ambitious Infrastructure and Economic Reforms,politics,data\images\img_0162.png,0,Consistent,val
+163,politics,High Court Delivers Landmark Constitutional Verdict Overhauling Campaign Finance Regulations,politics,data\images\img_0163.png,0,Consistent,train
+164,politics,Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit,politics,data\images\img_0164.png,0,Consistent,val
+165,politics,National Election Turnout Surges to Record Highs as Citizens Vote Across Fifty Districts,politics,data\images\img_0165.png,0,Consistent,train
+166,politics,Treasury Ministry Unveils Comprehensive Federal Budget Targeting Inflation and Healthcare,politics,data\images\img_0166.png,0,Consistent,train
+167,politics,Congressional Committee Concludes Month-Long Public Hearings on National Security Policy,politics,data\images\img_0167.png,0,Consistent,train
+168,politics,Opposition Coalition Wins Crucial Parliamentary Majority in Decisive General Election,politics,data\images\img_0168.png,0,Consistent,val
+169,politics,Bilateral Trade Delegation Reaches Milestone Treaty Reducing Cross-Border Tariffs,politics,data\images\img_0169.png,0,Consistent,train
+170,politics,Cabinet Approves Nationwide Energy Modernization Plan With Broad Legislative Backing,politics,data\images\img_0170.png,0,Consistent,train
+171,politics,Special Senate Committee Convenes Emergency Inquiry Regarding Financial Regulatory Oversight,politics,data\images\img_0171.png,0,Consistent,test
+172,politics,Prime Minister Announces Comprehensive Cabinet Reshuffle Ahead of Legislative Session,politics,data\images\img_0172.png,0,Consistent,train
+173,politics,Regional Governors Sign Unified Interstate Compact on Public Healthcare Coordination,politics,data\images\img_0173.png,0,Consistent,train
+174,politics,Electoral Commission Confirms Final Certified Results After Comprehensive Recount,politics,data\images\img_0174.png,0,Consistent,train
+175,politics,Diplomatic Envoy Dispatched to Facilitate Bilateral Ceasefire Negotiations,politics,data\images\img_0175.png,0,Consistent,val
+176,politics,Supreme Judicial Council Appoints Three New Justices in Landmark Confirmation Ceremony,politics,data\images\img_0176.png,0,Consistent,test
+177,politics,Civic Leaders Gather for Tri-City Mayoral Summit on Urban Housing and Infrastructure,politics,data\images\img_0177.png,0,Consistent,train
+178,politics,Federal Agency Implements Stringent Transparency Standards for Government Procurement,politics,data\images\img_0178.png,0,Consistent,test
+179,politics,Legislators Reach Compromise Agreement on Comprehensive National Defense Authorization,politics,data\images\img_0179.png,0,Consistent,train
+180,politics,Global Leaders Unveil Joint Declaration on Sovereign Cybersecurity Cooperation,politics,data\images\img_0180.png,0,Consistent,train
+181,politics,Parliament Passes Historic Bipartisan Environmental Protection Bill Following Heated Debate,politics,data\images\img_0181.png,0,Consistent,val
+182,politics,Head of State Delivers Annual Address Pledging Ambitious Infrastructure and Economic Reforms,politics,data\images\img_0182.png,0,Consistent,train
+183,politics,High Court Delivers Landmark Constitutional Verdict Overhauling Campaign Finance Regulations,politics,data\images\img_0183.png,0,Consistent,train
+184,politics,Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit,politics,data\images\img_0184.png,0,Consistent,train
+185,politics,National Election Turnout Surges to Record Highs as Citizens Vote Across Fifty Districts,politics,data\images\img_0185.png,0,Consistent,test
+186,politics,Treasury Ministry Unveils Comprehensive Federal Budget Targeting Inflation and Healthcare,politics,data\images\img_0186.png,0,Consistent,train
+187,politics,Congressional Committee Concludes Month-Long Public Hearings on National Security Policy,politics,data\images\img_0187.png,0,Consistent,val
+188,politics,Opposition Coalition Wins Crucial Parliamentary Majority in Decisive General Election,politics,data\images\img_0188.png,0,Consistent,train
+189,politics,Bilateral Trade Delegation Reaches Milestone Treaty Reducing Cross-Border Tariffs,politics,data\images\img_0189.png,0,Consistent,train
+190,politics,Cabinet Approves Nationwide Energy Modernization Plan With Broad Legislative Backing,politics,data\images\img_0190.png,0,Consistent,test
+191,politics,Special Senate Committee Convenes Emergency Inquiry Regarding Financial Regulatory Oversight,politics,data\images\img_0191.png,0,Consistent,train
+192,politics,Prime Minister Announces Comprehensive Cabinet Reshuffle Ahead of Legislative Session,politics,data\images\img_0192.png,0,Consistent,train
+193,politics,Regional Governors Sign Unified Interstate Compact on Public Healthcare Coordination,politics,data\images\img_0193.png,0,Consistent,train
+194,politics,Electoral Commission Confirms Final Certified Results After Comprehensive Recount,politics,data\images\img_0194.png,0,Consistent,train
+195,politics,Diplomatic Envoy Dispatched to Facilitate Bilateral Ceasefire Negotiations,politics,data\images\img_0195.png,0,Consistent,test
+196,politics,Supreme Judicial Council Appoints Three New Justices in Landmark Confirmation Ceremony,politics,data\images\img_0196.png,0,Consistent,train
+197,politics,Civic Leaders Gather for Tri-City Mayoral Summit on Urban Housing and Infrastructure,politics,data\images\img_0197.png,0,Consistent,train
+198,politics,Federal Agency Implements Stringent Transparency Standards for Government Procurement,politics,data\images\img_0198.png,0,Consistent,train
+199,politics,Legislators Reach Compromise Agreement on Comprehensive National Defense Authorization,politics,data\images\img_0199.png,0,Consistent,train
+200,politics,Global Leaders Unveil Joint Declaration on Sovereign Cybersecurity Cooperation,politics,data\images\img_0200.png,0,Consistent,train
+201,politics,Parliament Passes Historic Bipartisan Environmental Protection Bill Following Heated Debate,disasters,data\images\img_0201.png,1,Inconsistent,train
+202,politics,Head of State Delivers Annual Address Pledging Ambitious Infrastructure and Economic Reforms,sports,data\images\img_0202.png,1,Inconsistent,train
+203,politics,High Court Delivers Landmark Constitutional Verdict Overhauling Campaign Finance Regulations,tech,data\images\img_0203.png,1,Inconsistent,train
+204,politics,Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit,disasters,data\images\img_0204.png,1,Inconsistent,test
+205,politics,National Election Turnout Surges to Record Highs as Citizens Vote Across Fifty Districts,sports,data\images\img_0205.png,1,Inconsistent,val
+206,politics,Treasury Ministry Unveils Comprehensive Federal Budget Targeting Inflation and Healthcare,tech,data\images\img_0206.png,1,Inconsistent,test
+207,politics,Congressional Committee Concludes Month-Long Public Hearings on National Security Policy,disasters,data\images\img_0207.png,1,Inconsistent,train
+208,politics,Opposition Coalition Wins Crucial Parliamentary Majority in Decisive General Election,sports,data\images\img_0208.png,1,Inconsistent,test
+209,politics,Bilateral Trade Delegation Reaches Milestone Treaty Reducing Cross-Border Tariffs,tech,data\images\img_0209.png,1,Inconsistent,train
+210,politics,Cabinet Approves Nationwide Energy Modernization Plan With Broad Legislative Backing,disasters,data\images\img_0210.png,1,Inconsistent,test
+211,politics,Special Senate Committee Convenes Emergency Inquiry Regarding Financial Regulatory Oversight,sports,data\images\img_0211.png,1,Inconsistent,test
+212,politics,Prime Minister Announces Comprehensive Cabinet Reshuffle Ahead of Legislative Session,tech,data\images\img_0212.png,1,Inconsistent,train
+213,politics,Regional Governors Sign Unified Interstate Compact on Public Healthcare Coordination,disasters,data\images\img_0213.png,1,Inconsistent,train
+214,politics,Electoral Commission Confirms Final Certified Results After Comprehensive Recount,sports,data\images\img_0214.png,1,Inconsistent,train
+215,politics,Diplomatic Envoy Dispatched to Facilitate Bilateral Ceasefire Negotiations,tech,data\images\img_0215.png,1,Inconsistent,val
+216,politics,Supreme Judicial Council Appoints Three New Justices in Landmark Confirmation Ceremony,disasters,data\images\img_0216.png,1,Inconsistent,train
+217,politics,Civic Leaders Gather for Tri-City Mayoral Summit on Urban Housing and Infrastructure,sports,data\images\img_0217.png,1,Inconsistent,val
+218,politics,Federal Agency Implements Stringent Transparency Standards for Government Procurement,tech,data\images\img_0218.png,1,Inconsistent,train
+219,politics,Legislators Reach Compromise Agreement on Comprehensive National Defense Authorization,disasters,data\images\img_0219.png,1,Inconsistent,train
+220,politics,Global Leaders Unveil Joint Declaration on Sovereign Cybersecurity Cooperation,sports,data\images\img_0220.png,1,Inconsistent,val
+221,politics,Parliament Passes Historic Bipartisan Environmental Protection Bill Following Heated Debate,tech,data\images\img_0221.png,1,Inconsistent,train
+222,politics,Head of State Delivers Annual Address Pledging Ambitious Infrastructure and Economic Reforms,disasters,data\images\img_0222.png,1,Inconsistent,train
+223,politics,High Court Delivers Landmark Constitutional Verdict Overhauling Campaign Finance Regulations,sports,data\images\img_0223.png,1,Inconsistent,train
+224,politics,Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit,tech,data\images\img_0224.png,1,Inconsistent,train
+225,politics,National Election Turnout Surges to Record Highs as Citizens Vote Across Fifty Districts,disasters,data\images\img_0225.png,1,Inconsistent,val
+226,politics,Treasury Ministry Unveils Comprehensive Federal Budget Targeting Inflation and Healthcare,sports,data\images\img_0226.png,1,Inconsistent,train
+227,politics,Congressional Committee Concludes Month-Long Public Hearings on National Security Policy,tech,data\images\img_0227.png,1,Inconsistent,train
+228,politics,Opposition Coalition Wins Crucial Parliamentary Majority in Decisive General Election,disasters,data\images\img_0228.png,1,Inconsistent,test
+229,politics,Bilateral Trade Delegation Reaches Milestone Treaty Reducing Cross-Border Tariffs,sports,data\images\img_0229.png,1,Inconsistent,train
+230,politics,Cabinet Approves Nationwide Energy Modernization Plan With Broad Legislative Backing,tech,data\images\img_0230.png,1,Inconsistent,train
+231,politics,Special Senate Committee Convenes Emergency Inquiry Regarding Financial Regulatory Oversight,disasters,data\images\img_0231.png,1,Inconsistent,train
+232,politics,Prime Minister Announces Comprehensive Cabinet Reshuffle Ahead of Legislative Session,sports,data\images\img_0232.png,1,Inconsistent,train
+233,politics,Regional Governors Sign Unified Interstate Compact on Public Healthcare Coordination,tech,data\images\img_0233.png,1,Inconsistent,val
+234,politics,Electoral Commission Confirms Final Certified Results After Comprehensive Recount,disasters,data\images\img_0234.png,1,Inconsistent,train
+235,politics,Diplomatic Envoy Dispatched to Facilitate Bilateral Ceasefire Negotiations,sports,data\images\img_0235.png,1,Inconsistent,train
+236,politics,Supreme Judicial Council Appoints Three New Justices in Landmark Confirmation Ceremony,tech,data\images\img_0236.png,1,Inconsistent,train
+237,politics,Civic Leaders Gather for Tri-City Mayoral Summit on Urban Housing and Infrastructure,disasters,data\images\img_0237.png,1,Inconsistent,train
+238,politics,Federal Agency Implements Stringent Transparency Standards for Government Procurement,sports,data\images\img_0238.png,1,Inconsistent,train
+239,politics,Legislators Reach Compromise Agreement on Comprehensive National Defense Authorization,tech,data\images\img_0239.png,1,Inconsistent,train
+240,politics,Global Leaders Unveil Joint Declaration on Sovereign Cybersecurity Cooperation,disasters,data\images\img_0240.png,1,Inconsistent,train
+241,tech,Tech Giant Unveils Revolutionary Next-Generation Quantum Computing Processor Architecture,tech,data\images\img_0241.png,0,Consistent,train
+242,tech,Artificial Intelligence Startup Achieves Human-Level Multimodal Reasoning Benchmark,tech,data\images\img_0242.png,0,Consistent,train
+243,tech,Semiconductor Foundry Begins Commercial Production of Sub-2nm Silicon Microchips,tech,data\images\img_0243.png,0,Consistent,train
+244,tech,Breakthrough Solid-State Battery Prototype Quadruples Electric Vehicle Travel Range,tech,data\images\img_0244.png,0,Consistent,test
+245,tech,Aerospace Engineers Successfully Complete Autonomous Suborbital Flight Test,tech,data\images\img_0245.png,0,Consistent,val
+246,tech,Cybersecurity Researchers Discover and Patch Critical Zero-Day Vulnerability in Web Infrastructure,tech,data\images\img_0246.png,0,Consistent,val
+247,tech,Commercial Fusion Energy Reactor Sustains Net Energy Positive Plasma Reaction for Record Duration,tech,data\images\img_0247.png,0,Consistent,test
+248,tech,Novel Neural Interface Allows Direct Mind-to-Text Transcription at 90 Words Per Minute,tech,data\images\img_0248.png,0,Consistent,train
+249,tech,Open-Source Foundation Releases Ultra-Fast 100-Billion Parameter Foundation Model,tech,data\images\img_0249.png,0,Consistent,train
+250,tech,Robotics Consortium Demonstrates Fully Bipedal Humanoid Completing Complex Industrial Tasks,tech,data\images\img_0250.png,0,Consistent,train
+251,tech,Optical Computing Prototype Transmits Petabits of Data Using Silicon Photonic Waveguides,tech,data\images\img_0251.png,0,Consistent,train
+252,tech,Next-Generation Operating System Kernel Rewritten in Rust for Formally Verified Memory Safety,tech,data\images\img_0252.png,0,Consistent,train
+253,tech,Autonomous Electric Vertical Takeoff Aircraft Completes First Multi-Passenger Flight,tech,data\images\img_0253.png,0,Consistent,val
+254,tech,Space Exploration Agency Deploys Next-Gen Deep Space Imaging Telescope Array,tech,data\images\img_0254.png,0,Consistent,val
+255,tech,Researchers Develop Room-Temperature Superconducting Composite With Repeatable Verification,tech,data\images\img_0255.png,0,Consistent,train
+256,tech,Cloud Computing Provider Launches World's Largest Exascale AI Supercomputer Cluster,tech,data\images\img_0256.png,0,Consistent,test
+257,tech,Autonomous Fleet Achieves 50 Million Driverless Miles With Zero High-Severity Incidents,tech,data\images\img_0257.png,0,Consistent,train
+258,tech,CRISPR-Cas9 Gene Editing Platform Receives Historic Regulatory Approval for Rare Diseases,tech,data\images\img_0258.png,0,Consistent,train
+259,tech,Micro-LED Display Technology Eliminates Pixel Burn-In While Halving Power Consumption,tech,data\images\img_0259.png,0,Consistent,train
+260,tech,Next-Gen 6G Wireless Laboratory Demonstrates Terabit Wireless Transmission Through Obstacles,tech,data\images\img_0260.png,0,Consistent,train
+261,tech,Tech Giant Unveils Revolutionary Next-Generation Quantum Computing Processor Architecture,tech,data\images\img_0261.png,0,Consistent,train
+262,tech,Artificial Intelligence Startup Achieves Human-Level Multimodal Reasoning Benchmark,tech,data\images\img_0262.png,0,Consistent,test
+263,tech,Semiconductor Foundry Begins Commercial Production of Sub-2nm Silicon Microchips,tech,data\images\img_0263.png,0,Consistent,train
+264,tech,Breakthrough Solid-State Battery Prototype Quadruples Electric Vehicle Travel Range,tech,data\images\img_0264.png,0,Consistent,train
+265,tech,Aerospace Engineers Successfully Complete Autonomous Suborbital Flight Test,tech,data\images\img_0265.png,0,Consistent,train
+266,tech,Cybersecurity Researchers Discover and Patch Critical Zero-Day Vulnerability in Web Infrastructure,tech,data\images\img_0266.png,0,Consistent,test
+267,tech,Commercial Fusion Energy Reactor Sustains Net Energy Positive Plasma Reaction for Record Duration,tech,data\images\img_0267.png,0,Consistent,train
+268,tech,Novel Neural Interface Allows Direct Mind-to-Text Transcription at 90 Words Per Minute,tech,data\images\img_0268.png,0,Consistent,train
+269,tech,Open-Source Foundation Releases Ultra-Fast 100-Billion Parameter Foundation Model,tech,data\images\img_0269.png,0,Consistent,val
+270,tech,Robotics Consortium Demonstrates Fully Bipedal Humanoid Completing Complex Industrial Tasks,tech,data\images\img_0270.png,0,Consistent,train
+271,tech,Optical Computing Prototype Transmits Petabits of Data Using Silicon Photonic Waveguides,tech,data\images\img_0271.png,0,Consistent,train
+272,tech,Next-Generation Operating System Kernel Rewritten in Rust for Formally Verified Memory Safety,tech,data\images\img_0272.png,0,Consistent,train
+273,tech,Autonomous Electric Vertical Takeoff Aircraft Completes First Multi-Passenger Flight,tech,data\images\img_0273.png,0,Consistent,train
+274,tech,Space Exploration Agency Deploys Next-Gen Deep Space Imaging Telescope Array,tech,data\images\img_0274.png,0,Consistent,val
+275,tech,Researchers Develop Room-Temperature Superconducting Composite With Repeatable Verification,tech,data\images\img_0275.png,0,Consistent,train
+276,tech,Cloud Computing Provider Launches World's Largest Exascale AI Supercomputer Cluster,tech,data\images\img_0276.png,0,Consistent,train
+277,tech,Autonomous Fleet Achieves 50 Million Driverless Miles With Zero High-Severity Incidents,tech,data\images\img_0277.png,0,Consistent,train
+278,tech,CRISPR-Cas9 Gene Editing Platform Receives Historic Regulatory Approval for Rare Diseases,tech,data\images\img_0278.png,0,Consistent,train
+279,tech,Micro-LED Display Technology Eliminates Pixel Burn-In While Halving Power Consumption,tech,data\images\img_0279.png,0,Consistent,train
+280,tech,Next-Gen 6G Wireless Laboratory Demonstrates Terabit Wireless Transmission Through Obstacles,tech,data\images\img_0280.png,0,Consistent,test
+281,tech,Tech Giant Unveils Revolutionary Next-Generation Quantum Computing Processor Architecture,disasters,data\images\img_0281.png,1,Inconsistent,train
+282,tech,Artificial Intelligence Startup Achieves Human-Level Multimodal Reasoning Benchmark,sports,data\images\img_0282.png,1,Inconsistent,val
+283,tech,Semiconductor Foundry Begins Commercial Production of Sub-2nm Silicon Microchips,politics,data\images\img_0283.png,1,Inconsistent,train
+284,tech,Breakthrough Solid-State Battery Prototype Quadruples Electric Vehicle Travel Range,disasters,data\images\img_0284.png,1,Inconsistent,val
+285,tech,Aerospace Engineers Successfully Complete Autonomous Suborbital Flight Test,sports,data\images\img_0285.png,1,Inconsistent,train
+286,tech,Cybersecurity Researchers Discover and Patch Critical Zero-Day Vulnerability in Web Infrastructure,politics,data\images\img_0286.png,1,Inconsistent,train
+287,tech,Commercial Fusion Energy Reactor Sustains Net Energy Positive Plasma Reaction for Record Duration,disasters,data\images\img_0287.png,1,Inconsistent,train
+288,tech,Novel Neural Interface Allows Direct Mind-to-Text Transcription at 90 Words Per Minute,sports,data\images\img_0288.png,1,Inconsistent,train
+289,tech,Open-Source Foundation Releases Ultra-Fast 100-Billion Parameter Foundation Model,politics,data\images\img_0289.png,1,Inconsistent,train
+290,tech,Robotics Consortium Demonstrates Fully Bipedal Humanoid Completing Complex Industrial Tasks,disasters,data\images\img_0290.png,1,Inconsistent,test
+291,tech,Optical Computing Prototype Transmits Petabits of Data Using Silicon Photonic Waveguides,sports,data\images\img_0291.png,1,Inconsistent,train
+292,tech,Next-Generation Operating System Kernel Rewritten in Rust for Formally Verified Memory Safety,politics,data\images\img_0292.png,1,Inconsistent,train
+293,tech,Autonomous Electric Vertical Takeoff Aircraft Completes First Multi-Passenger Flight,disasters,data\images\img_0293.png,1,Inconsistent,test
+294,tech,Space Exploration Agency Deploys Next-Gen Deep Space Imaging Telescope Array,sports,data\images\img_0294.png,1,Inconsistent,test
+295,tech,Researchers Develop Room-Temperature Superconducting Composite With Repeatable Verification,politics,data\images\img_0295.png,1,Inconsistent,train
+296,tech,Cloud Computing Provider Launches World's Largest Exascale AI Supercomputer Cluster,disasters,data\images\img_0296.png,1,Inconsistent,train
+297,tech,Autonomous Fleet Achieves 50 Million Driverless Miles With Zero High-Severity Incidents,sports,data\images\img_0297.png,1,Inconsistent,train
+298,tech,CRISPR-Cas9 Gene Editing Platform Receives Historic Regulatory Approval for Rare Diseases,politics,data\images\img_0298.png,1,Inconsistent,train
+299,tech,Micro-LED Display Technology Eliminates Pixel Burn-In While Halving Power Consumption,disasters,data\images\img_0299.png,1,Inconsistent,test
+300,tech,Next-Gen 6G Wireless Laboratory Demonstrates Terabit Wireless Transmission Through Obstacles,sports,data\images\img_0300.png,1,Inconsistent,train
+301,tech,Tech Giant Unveils Revolutionary Next-Generation Quantum Computing Processor Architecture,politics,data\images\img_0301.png,1,Inconsistent,val
+302,tech,Artificial Intelligence Startup Achieves Human-Level Multimodal Reasoning Benchmark,disasters,data\images\img_0302.png,1,Inconsistent,train
+303,tech,Semiconductor Foundry Begins Commercial Production of Sub-2nm Silicon Microchips,sports,data\images\img_0303.png,1,Inconsistent,train
+304,tech,Breakthrough Solid-State Battery Prototype Quadruples Electric Vehicle Travel Range,politics,data\images\img_0304.png,1,Inconsistent,train
+305,tech,Aerospace Engineers Successfully Complete Autonomous Suborbital Flight Test,disasters,data\images\img_0305.png,1,Inconsistent,train
+306,tech,Cybersecurity Researchers Discover and Patch Critical Zero-Day Vulnerability in Web Infrastructure,sports,data\images\img_0306.png,1,Inconsistent,train
+307,tech,Commercial Fusion Energy Reactor Sustains Net Energy Positive Plasma Reaction for Record Duration,politics,data\images\img_0307.png,1,Inconsistent,train
+308,tech,Novel Neural Interface Allows Direct Mind-to-Text Transcription at 90 Words Per Minute,disasters,data\images\img_0308.png,1,Inconsistent,train
+309,tech,Open-Source Foundation Releases Ultra-Fast 100-Billion Parameter Foundation Model,sports,data\images\img_0309.png,1,Inconsistent,train
+310,tech,Robotics Consortium Demonstrates Fully Bipedal Humanoid Completing Complex Industrial Tasks,politics,data\images\img_0310.png,1,Inconsistent,train
+311,tech,Optical Computing Prototype Transmits Petabits of Data Using Silicon Photonic Waveguides,disasters,data\images\img_0311.png,1,Inconsistent,val
+312,tech,Next-Generation Operating System Kernel Rewritten in Rust for Formally Verified Memory Safety,sports,data\images\img_0312.png,1,Inconsistent,test
+313,tech,Autonomous Electric Vertical Takeoff Aircraft Completes First Multi-Passenger Flight,politics,data\images\img_0313.png,1,Inconsistent,train
+314,tech,Space Exploration Agency Deploys Next-Gen Deep Space Imaging Telescope Array,disasters,data\images\img_0314.png,1,Inconsistent,val
+315,tech,Researchers Develop Room-Temperature Superconducting Composite With Repeatable Verification,sports,data\images\img_0315.png,1,Inconsistent,train
+316,tech,Cloud Computing Provider Launches World's Largest Exascale AI Supercomputer Cluster,politics,data\images\img_0316.png,1,Inconsistent,test
+317,tech,Autonomous Fleet Achieves 50 Million Driverless Miles With Zero High-Severity Incidents,disasters,data\images\img_0317.png,1,Inconsistent,train
+318,tech,CRISPR-Cas9 Gene Editing Platform Receives Historic Regulatory Approval for Rare Diseases,sports,data\images\img_0318.png,1,Inconsistent,train
+319,tech,Micro-LED Display Technology Eliminates Pixel Burn-In While Halving Power Consumption,politics,data\images\img_0319.png,1,Inconsistent,train
+320,tech,Next-Gen 6G Wireless Laboratory Demonstrates Terabit Wireless Transmission Through Obstacles,disasters,data\images\img_0320.png,1,Inconsistent,val
