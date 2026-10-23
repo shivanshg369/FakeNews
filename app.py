@@ -5,7 +5,8 @@ from typing import Optional
 import streamlit as st
 from PIL import Image
 import torch
-from transformers import CLIPProcessor, CLIPModel
+
+from src.models import MultimodalConsistencyDetector
 
 # ---------------------------------------------------------------------------
 # Streamlit Page Config & Custom Styling
@@ -66,19 +67,17 @@ st.markdown("""
 
 
 # ---------------------------------------------------------------------------
-# Cached Model & Processor Loader (CLIP ViT-B/32)
+# Cached Model & Detector Loader
 # ---------------------------------------------------------------------------
 
-@st.cache_resource(show_spinner="Loading CLIP neural backbone & processor...")
-def load_runtime():
+@st.cache_resource(show_spinner="Loading Calibrated CLIP Multimodal Engine...")
+def load_detector():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-    model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32", use_safetensors=True).to(device)
-    model.eval()
-    return model, processor, device
+    detector = MultimodalConsistencyDetector(device=device)
+    return detector, device
 
 
-clip_model, clip_processor, device = load_runtime()
+detector, device = load_detector()
 
 # ---------------------------------------------------------------------------
 # Sidebar: Threshold Slider & Benchmark Presets
@@ -89,45 +88,59 @@ with st.sidebar:
     st.title("Calibration & Settings")
     st.markdown(f"**Runtime Device**: `{device}` ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
     st.markdown("**Backbone Model**: `openai/clip-vit-base-patch32`")
-    st.markdown("**Normalization**: Explicit Unit L2 Normalization")
+    st.markdown("**Calibration Engine**: Zero-Shot Contrastive Entailment + Domain Mapping")
 
     st.markdown("---")
-    st.subheader("Interactive Decision Slider")
-    # Interactive Threshold Slider required
+    st.subheader("Decision Sensitivity")
     threshold = st.slider(
-        "Decision Threshold",
-        min_value=0.10,
-        max_value=0.35,
-        value=0.18,
+        "Consistency Threshold",
+        min_value=0.20,
+        max_value=0.80,
+        value=0.45,
         step=0.01,
-        help="Pairs with Cosine Similarity ≥ Threshold are classified as Consistent. Pairs below are Inconsistent."
+        help="Pairs with Confidence ≥ Threshold are classified as Genuine / Consistent. Pairs below are Inconsistent / Misinformation."
     )
-    st.caption(f"Active Threshold: **{threshold:.4f}**")
+    st.caption(f"Active Decision Threshold: **{threshold * 100:.1f}%**")
 
     st.markdown("---")
-    st.subheader("Benchmark Test Presets")
-    st.write("Click to load calibrated benchmark pairs:")
+    st.subheader("Calibrated Benchmark Presets")
+    st.write("Click to load verified test pairs:")
 
     PRESETS = {
-        "Pair 1 (Match: Trump Conference)": {
-            "text": "Donald Trump speaking at a formal conference",
-            "img_path": "data/images/test_political_portrait.png",
-            "expected": "Consistent / Likely Genuine Context"
+        "Preset 1 (Match: Diplomatic Summit)": {
+            "text": "Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit",
+            "img_path": "data/images/politics_conference.jpg",
+            "expected": "Consistent / Genuine Context"
         },
-        "Pair 2 (Mismatch: Miami Floods)": {
-            "text": "Severe flash floods in Miami",
-            "img_path": "data/images/test_political_portrait.png",
+        "Preset 2 (Mismatch: Miami Floods on Press Conference)": {
+            "text": "Severe flash floods in Miami submerge major highways and downtown districts",
+            "img_path": "data/images/politics_conference.jpg",
             "expected": "Inconsistent / Out-of-Context Misinformation"
         },
-        "Preset 3 (Disaster Earthquake)": {
+        "Preset 3 (Match: Earthquake Damage)": {
             "text": "Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage",
-            "img_path": "data/images/img_0001.png",
-            "expected": "Benchmark Pair"
+            "img_path": "data/images/disaster_earthquake.jpg",
+            "expected": "Consistent / Genuine Context"
         },
-        "Preset 4 (Tech Quantum AI)": {
+        "Preset 4 (Match: Quantum Microchip)": {
             "text": "Tech Giant Unveils Revolutionary Next-Generation Quantum Computing Processor Architecture",
-            "img_path": "data/images/img_0241.png",
-            "expected": "Benchmark Pair"
+            "img_path": "data/images/tech_processor.jpg",
+            "expected": "Consistent / Genuine Context"
+        },
+        "Preset 5 (Match: Championship Game)": {
+            "text": "Underdog Franchise Clinches National Championship in Thrilling Double Overtime Victory",
+            "img_path": "data/images/sports_championship.jpg",
+            "expected": "Consistent / Genuine Context"
+        },
+        "Preset 6 (Mismatch: Earthquake on Tech Cleanroom)": {
+            "text": "Massive Magnitude 7.2 Earthquake Strikes Coastal Province Causing Widespread Structural Damage",
+            "img_path": "data/images/tech_processor.jpg",
+            "expected": "Inconsistent / Out-of-Context Misinformation"
+        },
+        "Preset 7 (Match: Political Speech)": {
+            "text": "Donald Trump speaking at a formal conference",
+            "img_path": "data/images/test_political_portrait.png",
+            "expected": "Consistent / Genuine Context"
         }
     }
 
@@ -138,7 +151,7 @@ with st.sidebar:
 # ---------------------------------------------------------------------------
 
 st.markdown('<div class="main-title">Multimodal Fake News & Consistency Detector</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">Verify text-image contextual alignment using calibrated CLIP embeddings and explicit L2 normalization.</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">Verify text-image contextual alignment using calibrated CLIP embeddings, semantic topic classification, and hypothesis entailment.</div>', unsafe_allow_html=True)
 
 # Preset state handler
 default_text = ""
@@ -158,7 +171,7 @@ with col1:
         "Enter news headline, social post, or claim:",
         value=default_text,
         height=130,
-        placeholder="e.g., Donald Trump speaking at a formal conference..."
+        placeholder="e.g., Diplomatic Leaders Sign Historic International Peace Accord at Geneva Summit..."
     )
 
     st.subheader("2. Paired Visual Media")
@@ -187,103 +200,102 @@ with col2:
         st.info("Please upload an image or choose a benchmark preset to inspect.")
 
 # ---------------------------------------------------------------------------
-# Robust Calibration Inference & Results Section
+# Calibrated Inference & Results Section
 # ---------------------------------------------------------------------------
 
 if analyze_clicked:
     if not headline_input.strip() or active_image is None:
         st.warning("Please provide both a text headline and an image for multimodal consistency analysis.")
     else:
-        with st.spinner("Extracting CLIP representations with explicit L2 normalization..."):
-            with torch.no_grad():
-                # 1. Proper Embedding Extraction with CLIPProcessor
-                text_inputs = clip_processor(text=[headline_input], return_tensors="pt", padding=True).to(device)
-                image_inputs = clip_processor(images=active_image, return_tensors="pt").to(device)
-
-                text_features = clip_model.get_text_features(**text_inputs)
-                image_features = clip_model.get_image_features(**image_inputs)
-
-                # 2. Explicit L2 Normalization on both vectors
-                text_features = text_features / text_features.norm(p=2, dim=-1, keepdim=True)
-                image_features = image_features / image_features.norm(p=2, dim=-1, keepdim=True)
-
-                # 3. Raw Cosine Similarity via dot product
-                raw_similarity = float((text_features @ image_features.T).item())
-
-            # 4. Dynamic Labeling based on Threshold Slider
-            if raw_similarity >= threshold:
-                label = "Consistent / Likely Genuine Context"
-                status_color = "green"
-                is_consistent = True
-            else:
-                label = "Inconsistent / Out-of-Context Misinformation"
-                status_color = "red"
-                is_consistent = False
+        with st.spinner("Executing calibrated multimodal cross-verification..."):
+            res = detector.analyze(
+                image=active_image,
+                headline=headline_input.strip(),
+                threshold=threshold
+            )
 
             # Telemetry logging to terminal
             print("=" * 70)
             print("[Streamlit / Inference] CALIBRATION TELEMETRY:")
             print(f"  * Headline Input            : '{headline_input[:80]}...'")
-            print(f"  * Raw Cosine Similarity     : {raw_similarity:.4f}")
-            print(f"  * Current Threshold         : {threshold:.4f}")
-            print(f"  * Numerical Gap             : {raw_similarity - threshold:+.4f}")
-            print(f"  * Final Verdict             : {label} ({status_color.upper()})")
+            print(f"  * Raw Cosine Similarity     : {res['raw_similarity']:.4f}")
+            print(f"  * Confidence Score          : {res['confidence_pct']:.1f}%")
+            print(f"  * Decision Threshold        : {threshold:.4f}")
+            print(f"  * Detected Image Topic      : {res['image_topic']}")
+            print(f"  * Detected Headline Topic   : {res['headline_topic']}")
+            print(f"  * Final Verdict             : {res['verdict']} ({res['status_color'].upper()})")
             print("=" * 70)
 
         st.markdown("---")
-        st.subheader("Inference & Verification Results")
+        st.subheader("Verification & Diagnostic Results")
 
         # -------------------------------------------------------------------
-        # Prominent UI Metrics Display (3 Metric Cards)
+        # Prominent UI Metrics Display (4 Metric Columns)
         # -------------------------------------------------------------------
-        m_col1, m_col2, m_col3 = st.columns(3)
+        m_col1, m_col2, m_col3, m_col4 = st.columns(4)
 
         with m_col1:
-            st.markdown("**1. Raw Cosine Similarity**")
+            st.markdown("**1. Consistency Confidence**")
+            diff = res["confidence"] - threshold
             st.metric(
-                label="Raw Dot Product Similarity",
-                value=f"{raw_similarity:.4f}"
+                label="Confidence Score",
+                value=f"{res['confidence_pct']:.1f}%",
+                delta=f"{diff * 100:+.1f}% vs threshold",
+                delta_color="normal" if res["is_consistent"] else "inverse"
             )
-            sim_pct = min(max((raw_similarity + 1.0) / 2.0, 0.0), 1.0)
-            st.progress(sim_pct)
+            st.progress(res["confidence"])
 
         with m_col2:
-            st.markdown("**2. Current Decision Threshold**")
-            diff = raw_similarity - threshold
+            st.markdown("**2. Decision Threshold**")
             st.metric(
-                label="Threshold (Adjustable)",
-                value=f"{threshold:.4f}",
-                delta=f"{diff:+.4f} vs threshold",
-                delta_color="normal" if is_consistent else "inverse"
+                label="Cutoff Requirement",
+                value=f"{threshold * 100:.1f}%"
             )
-            st.caption(f"Cutoff value set via sidebar slider")
+            st.caption("Adjustable in sidebar")
 
         with m_col3:
-            st.markdown("**3. Final Verdict**")
-            if is_consistent:
-                st.markdown(
-                    f'<div class="badge-consistent">✅ {label}</div>',
-                    unsafe_allow_html=True
-                )
-                st.caption("Similarity exceeds decision threshold.")
-            else:
-                st.markdown(
-                    f'<div class="badge-inconsistent">⚠️ {label}</div>',
-                    unsafe_allow_html=True
-                )
-                st.caption("Similarity strictly below decision threshold.")
+            st.markdown("**3. Visual Evidence Topic**")
+            st.metric(
+                label="Detected Image Domain",
+                value=res["image_topic"].split("/")[0].strip()
+            )
+            st.caption(f"Full: {res['image_topic']}")
+
+        with m_col4:
+            st.markdown("**4. Headline Claim Topic**")
+            st.metric(
+                label="Detected Claim Domain",
+                value=res["headline_topic"].split("/")[0].strip()
+            )
+            st.caption(f"Full: {res['headline_topic']}")
+
+        st.markdown("---")
+
+        # Prominent Verdict Banner
+        if res["is_consistent"]:
+            st.markdown(
+                f'<div class="badge-consistent">✅ {res["verdict"]}</div>',
+                unsafe_allow_html=True
+            )
+        else:
+            st.markdown(
+                f'<div class="badge-inconsistent">⚠️ {res["verdict"]}</div>',
+                unsafe_allow_html=True
+            )
 
         # Detailed Diagnostic Summary Card
-        st.markdown("#### Diagnostic Summary")
-        if is_consistent:
+        st.markdown("#### Diagnostic Explanation")
+        if res["is_consistent"]:
             st.success(
-                f"**Verified Genuine Context**: The computed raw cosine similarity is `{raw_similarity:.4f}`, "
-                f"which exceeds the decision threshold of `{threshold:.4f}` by `+{diff:.4f}`. "
-                f"The visual features corroborate the headline narrative."
+                f"**{res['explanation']}**\n\n"
+                f"- **Direct Cosine Similarity**: `{res['raw_similarity']:.4f}`\n"
+                f"- **Hypothesis Entailment Ratio**: `{res['entailment_ratio'] * 100:.1f}%`\n"
+                f"- **Cross-Modal Topic Agreement**: `{res['topic_agreement'] * 100:.1f}%`"
             )
         else:
             st.error(
-                f"**Flagged as Misinformation**: The computed raw cosine similarity is `{raw_similarity:.4f}`, "
-                f"which falls strictly below the decision threshold of `{threshold:.4f}` by `{diff:.4f}`. "
-                f"The visual evidence does not correspond to the subject of the claim."
+                f"**{res['explanation']}**\n\n"
+                f"- **Direct Cosine Similarity**: `{res['raw_similarity']:.4f}`\n"
+                f"- **Hypothesis Entailment Ratio**: `{res['entailment_ratio'] * 100:.1f}%`\n"
+                f"- **Cross-Modal Topic Agreement**: `{res['topic_agreement'] * 100:.1f}%`"
             )

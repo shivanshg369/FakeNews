@@ -156,19 +156,29 @@ class TestEndToEndPipeline(unittest.TestCase):
         the political portrait is correctly flagged as 'Inconsistent / Misleading'
         with cosine similarity < 0.20 and label_id = 1.
         """
-        print("\n[RUNNING TEST 4] Critical Mismatched Pair & Cosine Sanity Rule...")
-        import requests
         portrait_path = self.images_dir / "test_political_portrait.png"
         self.assertTrue(portrait_path.exists(), f"Test portrait image missing at {portrait_path}")
+        try:
+            import requests
+            url = "http://127.0.0.1:8000/predict"
+            data = {"text": "Severe flash floods submerge downtown streets in Miami"}
+            with open(portrait_path, "rb") as f:
+                files = {"image": ("test_political_portrait.png", f, "image/png")}
+                resp = requests.post(url, data=data, files=files, timeout=1.0)
+            result = resp.json()
+        except Exception:
+            from fastapi.testclient import TestClient
+            from api.main import app
+            client = TestClient(app)
+            with open(portrait_path, "rb") as f:
+                resp = client.post(
+                    "/predict",
+                    data={"text": "Severe flash floods submerge downtown streets in Miami"},
+                    files={"image": ("test_political_portrait.png", f, "image/png")}
+                )
+            result = resp.json()
 
-        url = "http://127.0.0.1:8000/predict"
-        data = {"text": "Severe flash floods submerge downtown streets in Miami"}
-        with open(portrait_path, "rb") as f:
-            files = {"image": ("test_political_portrait.png", f, "image/png")}
-            resp = requests.post(url, data=data, files=files)
-
-        self.assertEqual(resp.status_code, 200, f"Expected HTTP 200, got {resp.status_code}: {resp.text}")
-        result = resp.json()
+        self.assertEqual(resp.status_code, 200, f"Expected HTTP 200, got {resp.status_code}: {result}")
 
         print(f"  [+] Status Code          : {resp.status_code}")
         print(f"  [+] Prediction Label     : {result['label_name']} (id={result['label_id']})")

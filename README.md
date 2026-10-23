@@ -1,33 +1,35 @@
 # 🔍 Multimodal Fake News Detection
 
-A multimodal deep learning system designed to detect inconsistent or misleading news stories by analyzing cross-modal relationships between article text and accompanying images.
+A multimodal deep learning system designed to detect inconsistent or misleading news stories by analyzing cross-modal relationships between article claims and accompanying images.
 
 ---
 
-## 📌 Architecture Overview
+## 📌 Architecture & Calibrated Verification Engine
 
-The system uses a multimodal architecture that pairs a frozen **CLIP** (`openai/clip-vit-base-patch32`) backbone with a trainable **Multilayer Perceptron (MLP)** classifier:
+The system uses a multimodal architecture powered by **CLIP** (`openai/clip-vit-base-patch32`) combined with a **Calibrated Zero-Shot Consistency Engine**:
 
-1. **Feature Extraction**:
-   - Frozen CLIP extracts L2-normalized text features ($512$-d) and image features ($512$-d).
-   - Computes cross-modal cosine similarity ($1$-d) between normalized image and text embeddings.
-2. **Feature Fusion**:
-   - Concatenates `[text_features (512) | image_features (512) | cosine_similarity (1)]` $\rightarrow$ $1025$-d fused vector.
-3. **Classification Head**:
-   - Trainable MLP: `Linear(1025 -> 256)` $\rightarrow$ `ReLU` $\rightarrow$ `Dropout(0.3)` $\rightarrow$ `Linear(256 -> 1)`.
-   - Sigmoid activation yields probability of cross-modal inconsistency / fake news.
+1. **Semantic Topic Mapping**:
+   - Classifies visual and textual representations across core news domains (Politics, Disasters, Technology, Sports, Business, etc.).
+   - Detects domain mismatches (e.g. an emergency claim paired with a political press conference image).
+2. **Contrastive Hypothesis Entailment**:
+   - Evaluates the claim against counterfactual baselines to eliminate modality gap and text-length biases inherent in raw cosine similarity.
+   - Computes an entailment ratio: $P(\text{Claim} \mid \text{Image})$.
+3. **Calibrated Confidence Score**:
+   - Synthesizes direct cosine similarity, entailment ratio, and semantic domain agreement into a calibrated confidence score ($0\% - 100\%$).
+   - Pairs with confidence $\ge 45\%$ are classified as **Consistent / Genuine Context**.
+   - Pairs with confidence $< 45\%$ are flagged as **Inconsistent / Out-of-Context Misinformation**.
 4. **Classification Labels**:
-   - `0`: Consistent / Real (Article and image match contextually)
-   - `1`: Inconsistent / Fake (Article and image are mismatched or manipulated)
+   - `0`: Consistent / Real (Article and visual evidence match contextually)
+   - `1`: Inconsistent / Fake (Article and image are mismatched, manipulated, or out-of-context)
 
 ---
 
 ## 🚀 Key Features
 
-- **Interactive Streamlit Web Application**: Modern UI for testing news articles, image uploads, visual inspection, and consistency score gauges.
-- **RESTful API (FastAPI)**: Production-ready endpoints for single-item and batch multimodal predictions.
-- **Pre-computed Feature Caching**: Accelerates dataset training by caching frozen CLIP embeddings.
-- **Comprehensive Evaluation**: Metrics reporting including Accuracy, Precision, Recall, F1 score, and Confusion Matrix generation.
+- **Interactive Streamlit Web Dashboard**: Test news claims and uploaded images with real-time gauges, visual domain detection, and detailed diagnostic explanations.
+- **Calibrated Benchmark Presets**: Includes high-resolution test pairs across Politics, Disasters, Sports, and Technology.
+- **RESTful API (FastAPI)**: Production-ready `/predict` and `/predict/text-only` endpoints with full telemetry and Pydantic validation.
+- **End-to-End Test Suite**: Complete automated unit tests verifying inference, dataset integrity, and out-of-context sanity rules.
 
 ---
 
@@ -38,20 +40,23 @@ FakeNews/
 ├── api/                  # FastAPI backend service
 │   └── main.py
 ├── app.py                # Streamlit web dashboard
-├── data/                 # Sample dataset and imagery
-│   ├── images/           # Sample image dataset
+├── data/                 # Sample dataset and photo benchmarks
+│   ├── images/           # Benchmark imagery and sample dataset
 │   └── dataset.csv       # Multimodal metadata and labels
 ├── results/              # Evaluation metrics & confusion matrix
 │   ├── confusion_matrix.png
 │   ├── metrics_summary.json
 │   └── training_history.json
-├── saved_models/         # Serialized model weights (best_model.pth)
+├── saved_models/         # Serialized model weights & threshold configs
 ├── src/                  # Core source code
-│   ├── dataset.py        # Custom Dataset & CLIP feature extraction
-│   ├── evaluate.py       # Evaluation and metric calculation
-│   ├── models.py         # PyTorch multimodal architecture
+│   ├── dataset.py        # Dataset generation & CLIP feature extraction
+│   ├── evaluate.py       # Benchmark evaluation & confusion matrix plotting
+│   ├── models.py         # Calibrated detector & PyTorch architectures
 │   └── train.py          # Training loop & checkpointing
-├── tests/                # Unit & integration test suite
+├── tests/                # Automated test suite
+│   ├── test_clip_calibration.py
+│   ├── test_env.py
+│   └── test_pipeline.py
 ├── requirements.txt      # Project dependencies
 └── .gitignore            # Git exclusion rules
 ```
@@ -62,7 +67,7 @@ FakeNews/
 
 ### 1. Prerequisites
 - Python 3.10+
-- PyTorch with CUDA support (optional, CPU supported)
+- PyTorch (CUDA supported, CPU fallback included)
 
 ### 2. Installation
 ```bash
@@ -70,11 +75,10 @@ FakeNews/
 git clone https://github.com/shivanshg369/FakeNews.git
 cd FakeNews
 
-# Create and activate virtual environment
-python -m venv .venv
-# On Windows:
+# Activate virtual environment
+# Windows:
 .venv\Scripts\activate
-# On Linux / macOS:
+# Linux / macOS:
 source .venv/bin/activate
 
 # Install dependencies
@@ -90,23 +94,18 @@ streamlit run app.py
 ```bash
 uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
 ```
-Interactive API documentation will be available at `http://localhost:8000/docs`.
+Interactive API documentation is available at `http://localhost:8000/docs`.
 
-### 5. Training and Evaluation
+### 5. Running the Automated Test Suite
 ```bash
-# Train the classification head
-python -m src.train
+# Run End-to-End Pipeline & QA tests
+python -m unittest tests/test_pipeline.py
 
-# Evaluate on test split
+# Run Multimodal Calibration tests
+python tests/test_clip_calibration.py
+
+# Run Test Benchmark Evaluation
 python -m src.evaluate
-```
-
----
-
-## 🧪 Testing
-Run the test suite using pytest:
-```bash
-pytest tests/ -v
 ```
 
 ---

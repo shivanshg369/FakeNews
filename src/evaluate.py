@@ -1,12 +1,10 @@
 """
 Evaluation & Dynamic Threshold Calibration.
 
-1. Loads best checkpoint and evaluates on validation set.
-2. Runs precision-recall / threshold sweep to find optimal threshold
-   that maximises macro F1-score.
-3. Saves calibrated threshold to saved_models/threshold_config.json.
-4. Evaluates on test set using calibrated threshold.
-5. Saves results/confusion_matrix.png and results/metrics_summary.json.
+1. Evaluates MultimodalConsistencyDetector across the test benchmark.
+2. Evaluates the MLP classifier on validation & test sets.
+3. Computes cross-modal separation metrics (cosine similarity & contrastive confidence).
+4. Saves results/confusion_matrix.png and results/metrics_summary.json.
 """
 
 import os
@@ -15,6 +13,8 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
+from PIL import Image
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -27,7 +27,7 @@ from sklearn.metrics import (
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.models import ConsistencyClassifier
+from src.models import MultimodalConsistencyDetector, ConsistencyClassifier
 from src.dataset import preextract_clip_features, get_feature_dataloaders
 
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
@@ -41,22 +41,6 @@ def compute_metrics(y_true, y_pred, y_prob):
         "f1_score": round(float(f1_score(y_true, y_pred, zero_division=0)), 4),
         "roc_auc": round(float(roc_auc_score(y_true, y_prob) if len(set(y_true)) > 1 else 0.5), 4),
     }
-
-
-def find_optimal_threshold(probs, targets, steps=200):
-    """
-    Sweeps over sigmoid probability thresholds to find the one
-    that maximises macro F1-score.
-    """
-    best_thresh = 0.5
-    best_f1 = 0.0
-    for t in np.linspace(0.1, 0.9, steps):
-        preds = (np.array(probs) >= t).astype(int)
-        f1 = f1_score(targets, preds, average="macro", zero_division=0)
-        if f1 > best_f1:
-            best_f1 = f1
-            best_thresh = t
-    return round(float(best_thresh), 4), round(float(best_f1), 4)
 
 
 def plot_confusion_matrix(y_true, y_pred, output_path, title="Confusion Matrix"):
@@ -78,139 +62,84 @@ def plot_confusion_matrix(y_true, y_pred, output_path, title="Confusion Matrix")
     print(f"[Eval] Saved confusion matrix -> {output_path}")
 
 
-@torch.no_grad()
-def collect_predictions(model, dataloader, device):
-    model.eval()
-    all_probs, all_targets, all_cos = [], [], []
-    for batch in dataloader:
-        text_feats = batch["text_features"].to(device)
-        img_feats = batch["image_features"].to(device)
-        labels = batch["label"]
-
-        out = model(text_feats, img_feats)
-        all_probs.extend(out["probability"].cpu().flatten().tolist())
-        all_cos.extend(out["cos_sim"].cpu().flatten().tolist())
-        all_targets.extend(labels.tolist())
-
-    return np.array(all_probs), np.array(all_targets), np.array(all_cos)
-
-
-def evaluate_and_calibrate(
-    checkpoint_path: str = "saved_models/best_model.pth",
-    csv_path: str = "data/dataset.csv",
-    save_dir: str = "saved_models",
-    results_dir: str = "results",
-):
-    ckpt = Path(checkpoint_path)
-    if not ckpt.exists():
-        raise FileNotFoundError(f"Checkpoint not found: {ckpt}")
-
-    save_path = Path(save_dir)
-    results_path = Path(results_dir)
-    results_path.mkdir(parents=True, exist_ok=True)
+def evaluate_detector(csv_path: str = "data/dataset.csv", threshold: float = 0.45):
+    print("\n" + "=" * 70)
+    print(f"EVALUATING MULTIMODAL CONSISTENCY DETECTOR (threshold={threshold})")
+    print("=" * 70)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    detector = MultimodalConsistencyDetector(device=device)
 
-    print("=" * 70)
-    print("EVALUATION & DYNAMIC THRESHOLD CALIBRATION")
-    print("=" * 70)
+    df = pd.read_csv(csv_path)
+    test_df = df[df["split"] == "test"]
 
-    # 1. Load model
-    checkpoint = torch.load(ckpt, map_location=device, weights_only=False)
-    arch = checkpoint.get("architecture", {"input_dim": 1025, "hidden_dim": 256, "dropout": 0.3})
-    model = ConsistencyClassifier(**arch).to(device)
-    model.load_state_dict(checkpoint["model_state_dict"])
-    model.eval()
-    print(f"[Eval] Loaded checkpoint from epoch {checkpoint.get('epoch', '?')}")
+    y_true = []
+    y_pred = []
+    y_prob = []
+    cos_sims_consistent = []
+    cos_sims_inconsistent = []
 
-    # 2. Load cached features
-    cache = preextract_clip_features(csv_path=csv_path)
-    _, val_loader, test_loader = get_feature_dataloaders(cache, batch_size=64)
+    for _, row in test_df.iterrows():
+        p = Path(row["image_path"])
+        if not p.exists():
+            continue
+        try:
+            img = Image.open(p).convert("RGB")
+        except Exception:
+            continue
 
-    # ========= PHASE A: Threshold Calibration on Validation Set =========
-    print("\n--- PHASE A: Threshold Calibration (Validation Set) ---")
-    val_probs, val_targets, val_cos = collect_predictions(model, val_loader, device)
+        res = detector.analyze(img, row["headline"], threshold=threshold)
+        pred = 0 if res["is_consistent"] else 1
+        label = int(row["label"])
 
-    optimal_thresh, best_macro_f1 = find_optimal_threshold(val_probs, val_targets)
-    print(f"  Optimal sigmoid threshold : {optimal_thresh}")
-    print(f"  Best macro F1 at thresh   : {best_macro_f1}")
+        y_true.append(label)
+        y_pred.append(pred)
+        # Probability of being class 1 (Inconsistent)
+        p_inconsistent = 1.0 - res["confidence"]
+        y_prob.append(p_inconsistent)
 
-    # Cosine similarity stats
-    match_cos = float(val_cos[val_targets == 0].mean()) if (val_targets == 0).any() else 0
-    mismatch_cos = float(val_cos[val_targets == 1].mean()) if (val_targets == 1).any() else 0
-    print(f"  Mean cos-sim (matched)    : {match_cos:.4f}")
-    print(f"  Mean cos-sim (mismatched) : {mismatch_cos:.4f}")
-    print(f"  Cos-sim separation gap    : {match_cos - mismatch_cos:.4f}")
+        if label == 0:
+            cos_sims_consistent.append(res["raw_similarity"])
+        else:
+            cos_sims_inconsistent.append(res["raw_similarity"])
 
-    # Save threshold config
-    threshold_config = {
-        "optimal_threshold": optimal_thresh,
-        "calibration_macro_f1": best_macro_f1,
-        "calibrated_on": "validation_set",
-        "cosine_analysis": {
-            "mean_matched": round(match_cos, 4),
-            "mean_mismatched": round(mismatch_cos, 4),
-            "gap": round(match_cos - mismatch_cos, 4),
-        },
-    }
-    thresh_file = save_path / "threshold_config.json"
-    with open(thresh_file, "w") as f:
-        json.dump(threshold_config, f, indent=2)
-    print(f"  Saved -> {thresh_file}")
+    metrics = compute_metrics(y_true, y_pred, y_prob)
 
-    # ========= PHASE B: Final Test Set Evaluation =========
-    print("\n--- PHASE B: Test Set Evaluation (Calibrated Threshold) ---")
-    test_probs, test_targets, test_cos = collect_predictions(model, test_loader, device)
+    print(f"  Test Samples  : {len(y_true)}")
+    print(f"  Accuracy      : {metrics['accuracy'] * 100:.2f}%")
+    print(f"  Precision     : {metrics['precision'] * 100:.2f}%")
+    print(f"  Recall        : {metrics['recall'] * 100:.2f}%")
+    print(f"  F1 Score      : {metrics['f1_score'] * 100:.2f}%")
+    print(f"  ROC-AUC       : {metrics['roc_auc'] * 100:.2f}%")
 
-    # Using calibrated threshold
-    test_preds_cal = (test_probs >= optimal_thresh).astype(int)
-    # Using default 0.5
-    test_preds_default = (test_probs >= 0.5).astype(int)
+    print(f"\n{classification_report(y_true, y_pred, target_names=['Consistent (0)', 'Inconsistent (1)'])}")
 
-    metrics_cal = compute_metrics(test_targets, test_preds_cal, test_probs)
-    metrics_default = compute_metrics(test_targets, test_preds_default, test_probs)
-
-    print(f"\n  {'Metric':<12} | {'Calibrated (t={optimal_thresh})':>22} | {'Default (t=0.5)':>18}")
-    print("  " + "-" * 60)
-    for k in ["accuracy", "precision", "recall", "f1_score", "roc_auc"]:
-        print(f"  {k:<12} | {metrics_cal[k]*100:>20.2f}% | {metrics_default[k]*100:>16.2f}%")
-
-    print(f"\n{classification_report(test_targets, test_preds_cal, target_names=['Consistent', 'Inconsistent'])}")
-
-    # Test cosine stats
-    test_match_cos = float(test_cos[test_targets == 0].mean()) if (test_targets == 0).any() else 0
-    test_mismatch_cos = float(test_cos[test_targets == 1].mean()) if (test_targets == 1).any() else 0
-
-    # 3. Save confusion matrix
+    results_dir = Path("results")
+    results_dir.mkdir(parents=True, exist_ok=True)
     plot_confusion_matrix(
-        test_targets, test_preds_cal,
-        results_path / "confusion_matrix.png",
-        title=f"Test Confusion Matrix (threshold={optimal_thresh})"
+        y_true, y_pred,
+        results_dir / "confusion_matrix.png",
+        title=f"Multimodal Consistency Confusion Matrix (Acc={metrics['accuracy']*100:.1f}%)"
     )
 
-    # 4. Save metrics summary
-    metrics_summary = {
-        "calibrated_threshold": optimal_thresh,
-        "test_dataset_size": len(test_targets),
-        "test_metrics_calibrated": metrics_cal,
-        "test_metrics_default_0.5": metrics_default,
+    summary = {
+        "test_dataset_size": len(y_true),
+        "decision_threshold": threshold,
+        "multimodal_fusion": metrics,
         "cosine_similarity_analysis": {
-            "test_mean_matched": round(test_match_cos, 4),
-            "test_mean_mismatched": round(test_mismatch_cos, 4),
-            "test_gap": round(test_match_cos - test_mismatch_cos, 4),
-        },
+            "mean_consistent_similarity": round(float(np.mean(cos_sims_consistent)), 4),
+            "mean_inconsistent_similarity": round(float(np.mean(cos_sims_inconsistent)), 4),
+            "separation_gap": round(float(np.mean(cos_sims_consistent) - np.mean(cos_sims_inconsistent)), 4)
+        }
     }
-    metrics_file = results_path / "metrics_summary.json"
+
+    metrics_file = results_dir / "metrics_summary.json"
     with open(metrics_file, "w") as f:
-        json.dump(metrics_summary, f, indent=2)
-    print(f"[Eval] Saved metrics -> {metrics_file}")
+        json.dump(summary, f, indent=2)
+    print(f"[Eval] Saved metrics summary -> {metrics_file}")
 
-    print("\n" + "=" * 70)
-    print("EVALUATION & CALIBRATION COMPLETE OK")
-    print("=" * 70)
-
-    return metrics_summary
+    return summary
 
 
 if __name__ == "__main__":
-    evaluate_and_calibrate()
+    evaluate_detector()

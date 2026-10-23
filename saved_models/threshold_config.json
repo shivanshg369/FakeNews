@@ -1,0 +1,10 @@
+{
+  "optimal_threshold": 0.4899,
+  "calibration_macro_f1": 0.5636,
+  "calibrated_on": "validation_set",
+  "cosine_analysis": {
+    "mean_matched": 0.1991,
+    "mean_mismatched": 0.1639,
+    "gap": 0.0352
+  }
+}
